@@ -18,9 +18,12 @@ class_name HurtBox
 
 func activate():
 	hit_id = Time.get_ticks_msec()
+	monitorable = true
+	
 
 func deactivate():
 	hit_id = 0
+	monitorable = false
 
 signal contact(vector)
 
@@ -37,6 +40,7 @@ func _ready():
 	collision_layer = 0b01000000
 	collision_mask = 0b0100
 	monitoring = false
+	monitorable = false
 	pushback_timer.one_shot = true
 	pushback_timer.wait_time = pushback_cooldown
 	add_child(pushback_timer)
