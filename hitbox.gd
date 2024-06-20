@@ -9,6 +9,7 @@ static var friendly_fire : bool = false
 func _on_hitbox_area_entered(area):
 	if not area is HurtBox: return
 	if area.owner == owner: return
+	if not friendly_fire and (team & area.team) != 0: return
 	if not owner.get_node("%i_frames").is_stopped(): return
 	
 	var hb = area as HurtBox

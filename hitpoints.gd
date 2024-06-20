@@ -8,6 +8,10 @@ var damage_list := {}
 
 var last_place_i_got_hurt_from = null
 
+var left: int :
+	get : return clampi(hp - damage_taken,0, hp)
+	
+
 func register_damage(key, damage):
 	if key == 0: return false
 	if not owner.get_node("%i_frames").is_stopped(): return false
