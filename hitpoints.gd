@@ -1,7 +1,12 @@
 extends Node
 class_name HeartPoints
 
-@export var hp := 4
+signal max_changed
+@export var hp := 4:
+	set(v):
+		max_changed.emit()
+		hp = v
+
 var damage_taken := 0
 
 var damage_list := {}
